@@ -404,7 +404,7 @@ class AbstractRefreshToken(models.Model):
             try:
                 self = refresh_token_model.objects.select_for_update().filter(
                     pk=self.pk, revoked__isnull=True
-                )[0]
+                )
             except refresh_token_model.DoesNotExist:
                 return
             if not self:
